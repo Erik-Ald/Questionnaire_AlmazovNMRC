@@ -1,0 +1,121 @@
+body, html{
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f4f5f9;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+img{
+    height: 100%;
+}
+header{
+    width: 100%;
+    height: 10vh;
+    background: rgba(255, 255, 255, 0.99);
+    color: #e8e8e8;
+    font-size: 3vh;
+    display: flex;
+    justify-content: start;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-height: 100%;
+}
+.logo p{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.usual{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #f4f5f9;
+}
+.logo a{
+    max-height: 3vh;
+    text-decoration: none;
+    padding: 2vh;
+    color: #60B8E8;
+    font-family: "Tahoma";
+}
+span{
+    padding: 1vh;
+}
+.background{
+    margin-left: 30vw;
+    margin-right: 30vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: white;
+    border-radius: 8px;
+    justify-content: center;
+}
+.question {
+    padding-bottom: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.questionsInRow{
+    display: flex;
+    flex-direction: row;
+}
+#birth{
+    margin-left: 2vw ;
+}
+.submit{
+    height: 120%;
+    width: 20%;
+    border-radius: 20px;
+    background-color: #60B8E8;
+    color: white;
+    margin-left: auto;
+    align-self: end;
+    border: 2px solid #60B8E8;
+    padding: 10px;
+    transition-duration: 0.5s;
+}
+.submit:hover{
+    background-color: white;
+    color: #60B8E8;
+    transition-duration: 0.5s;
+}
+.input{
+    border: 2px solid #60B8E8;
+    border-radius: 8px;
+    height: 3vh;
+    font-size: 3vh;
+    padding: 1vh 1vw;
+}
+.question a{
+    padding: 1vh 1vw;
+    font-family: "Tahoma";
+}
+.question p{
+    border: 2px solid #60B8E8;
+    border-radius: 10px;
+    padding: 2vw 1vh;
+}
+.num{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    margin: 5vh 30vw;
+}
