@@ -16,9 +16,9 @@
     <form method="post" action="/questionnaire/Migraine/15?pageNum=${pageNum}">
         <#assign num = 0>
         <#list questions as question>
+            <input type="hidden" name="listAnswer[${num}].question.id" value="${question.id}">
             <div class="question">
                 <a>${question.question}</a>
-                <input type="hidden" name="listAnswer[${num}].question.id" value="${question.id}">
                 <#switch "${question.answerType}">
                     <#case 'num'>
                         <input type="number" class="input" name="listAnswer[${num}].answer" max="99" min="0">
@@ -30,7 +30,6 @@
                                     <input type="radio" name="listAnswer[${num}].answer" value="${answer.answer}">
                                     ${answer.answer}
                             </#if>
-                            <#assign num++>
                         </#list>
                     </p>
                     <#break>

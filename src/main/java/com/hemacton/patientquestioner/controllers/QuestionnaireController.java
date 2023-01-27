@@ -2,10 +2,7 @@ package com.hemacton.patientquestioner.controllers;
 
 import com.hemacton.patientquestioner.dto.AnswersFromPage;
 import com.hemacton.patientquestioner.models.Answer;
-import com.hemacton.patientquestioner.services.AnswerOptionService;
-import com.hemacton.patientquestioner.services.AnswerService;
-import com.hemacton.patientquestioner.services.QuestionnairesService;
-import com.hemacton.patientquestioner.services.QuestionsService;
+import com.hemacton.patientquestioner.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +22,7 @@ public class QuestionnaireController {
     private final QuestionsService questionsService;
     private final AnswerOptionService answerOptionService;
     private final AnswerService answerService;
+    private final PythonService pythonService;
 
     @GetMapping("/migraine")
     public String newMigraineQuestionnaire(RedirectAttributes redirectAttributes){
@@ -38,21 +36,27 @@ public class QuestionnaireController {
                            @RequestParam(name = "pageNum") String pageNum,
                            Model model){
 
-        short pageNumShort = Short.parseShort(pageNum);
-
-        System.out.println(pageNumShort);
-
-        model.addAttribute("questions",
-                questionsService.getQuestions(type,pageNumShort));
-
-        model.addAttribute("answerOptions",
-                answerOptionService.getAnswersOptionsForPage(pageNumShort));
-
-        model.addAttribute("pageNum", pageNum);
-
         if (Integer.parseInt(pageNum) >= questionnairesService.getQuestioner(type).getPages()) {
+
+            String pythonReturn = pythonService.sentToPython(type,id);
+            model.addAttribute("python",pythonReturn);
+
             return "completed";
+
         } else {
+
+            short pageNumShort = Short.parseShort(pageNum);
+
+            System.out.println(pageNumShort);
+
+            model.addAttribute("questions",
+                    questionsService.getQuestions(type,pageNumShort));
+
+            model.addAttribute("answerOptions",
+                    answerOptionService.getAnswersOptionsForPage(pageNumShort));
+
+            model.addAttribute("pageNum", pageNum);
+
             return "questionnaire_page";
         }
 
@@ -69,7 +73,9 @@ public class QuestionnaireController {
         Long patientIdLong = Long.parseLong(patientId);
 
         for (Answer answer : answerFormPage.getListAnswer()){
-            answerService.addAnswer(answer,patientIdLong);
+            if (answer.getAnswer() != null) {
+                answerService.addAnswer(answer, patientIdLong);
+            }
         }
 
         ++num;

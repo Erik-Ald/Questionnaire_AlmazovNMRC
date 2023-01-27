@@ -11,7 +11,12 @@
 <body class ="usual">
 <#include "header.ftlh">
 <div class="background">
-    <a>Спасибо за прохождение опроса!</a>
+    <#if python == "successful">
+        <a>Спасибо за прохождение опроса!</a>
+        <#else>
+        <a>${python}</a>
+    </#if>
+
 </div>
 </body>
 </html>
