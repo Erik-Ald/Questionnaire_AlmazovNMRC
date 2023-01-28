@@ -138,9 +138,14 @@ hr {
     color: #60B8E8;
     background-color: #60B8E8;
 }
-
 .inactive {
     color: #b5b5b5;
     background-color: #b5b5b5;
+}
+@media screen and (max-width: 768px) {
+    .background {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
 }
 
