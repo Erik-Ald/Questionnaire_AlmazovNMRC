@@ -49,13 +49,10 @@ public class QuestionnaireController {
 
             System.out.println(pageNumShort);
 
-            model.addAttribute("questions",
-                    questionsService.getQuestions(type,pageNumShort));
-
-            model.addAttribute("answerOptions",
-                    answerOptionService.getAnswersOptionsForPage(pageNumShort));
-
+            model.addAttribute("questions", questionsService.getQuestions(type,pageNumShort));
+            model.addAttribute("answerOptions", answerOptionService.getAnswersOptionsForPage(pageNumShort));
             model.addAttribute("pageNum", pageNum);
+            model.addAttribute("numOfPages", questionnairesService.getQuestioner(type).getPages());
 
             return "questionnaire_page";
         }

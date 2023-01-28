@@ -10,24 +10,36 @@
 </head>
 <body class ="usual">
 <#include "header.ftlh">
-<div class="num">&lt;div&gt; 1 &lt;/div&gt;
+<div class="num background">
+    <#assign currentPage =  pageNum?number + 1>
+    <p> ${currentPage}  из ${numOfPages}</p>
+    <div class="line">
+        <#assign n = numOfPages>
+        <#list 0..<n as i>
+            <#if pageNum?number < i>
+                <hr class="inactive">
+            <#else>
+                <hr class="active">
+            </#if>
+        </#list>
+    </div>
 </div>
 <div class="background">
     <form method="post" action="/questionnaire/Migraine/15?pageNum=${pageNum}">
         <#assign num = 0>
         <#list questions as question>
-            <input type="hidden" name="listAnswer[${num}].question.id" value="${question.id}">
+            <input required type="hidden" name="listAnswer[${num}].question.id" value="${question.id}">
             <div class="question">
                 <a>${question.question}</a>
                 <#switch "${question.answerType}">
                     <#case 'num'>
-                        <input type="number" class="input" name="listAnswer[${num}].answer" max="99" min="0">
+                        <input required type="number" class="input" name="listAnswer[${num}].answer" max="99" min="0">
                         <#break>
                     <#case 'var'>
                     <p>
                         <#list answerOptions as answer>
                             <#if answer.question.id == question.id>
-                                    <input type="radio" name="listAnswer[${num}].answer" value="${answer.answer}">
+                                    <input required type="radio" name="listAnswer[${num}].answer" value="${answer.answer}">
                                     ${answer.answer}
                             </#if>
                         </#list>

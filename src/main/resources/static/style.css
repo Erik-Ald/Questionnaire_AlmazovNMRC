@@ -54,8 +54,8 @@ span{
     padding: 1vh;
 }
 .background{
-    margin-left: 30vw;
-    margin-right: 30vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding-left: 2vw;
@@ -81,7 +81,7 @@ span{
 }
 .submit{
     height: 120%;
-    width: 20%;
+    min-width: 40%;
     border-radius: 20px;
     background-color: #60B8E8;
     color: white;
@@ -114,8 +114,33 @@ span{
 }
 .num{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: white;
-    margin: 5vh 30vw;
 }
+.num p {
+    align-self: start;
+    font-family: "Tahoma";
+    color: #60B8E8;
+}
+.line{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+hr {
+    border: none;
+    height: 6px;
+    width: 80%;
+}
+.active {
+    color: #60B8E8;
+    background-color: #60B8E8;
+}
+
+.inactive {
+    color: #b5b5b5;
+    background-color: #b5b5b5;
+}
+
